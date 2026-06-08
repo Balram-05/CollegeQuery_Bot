@@ -1,0 +1,26 @@
+# LangChain & LangGraph core
+langgraph>=0.0.10
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-chroma>=0.1.0
+langchain-groq>=0.1.0
+chromadb>=0.4.24
+
+# Text processing & embeddings
+pypdf>=4.0.0
+sentence-transformers>=2.5.0
+huggingface-hub>=0.20.0
+
+# Backend & Web Frameworks
+fastapi>=0.110.0
+uvicorn>=0.28.0
+pydantic>=2.6.0
+python-dotenv>=1.0.1
+
+# Database Drivers
+mysql-connector-python>=8.3.0
+cryptography>=42.0.0
+
+# Frontend UI
+streamlit>=1.32.0
+requests>=2.31.0

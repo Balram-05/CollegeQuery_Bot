@@ -1,0 +1,35 @@
+name: Continuous Integration & Deployment Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python Runtime Environ
+      uses: actions/setup-python@v4
+      with:
+        python-level: '3.10'
+
+    - name: Install Architecture Requirements
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Basic Syntactic Structural Validation
+      run: |
+        # Verifies files parse correctly without structural compilation defects
+        python -m py_compile main.py src/components/database.py src/components/data_ingestion.py src/components/graph_bot.py
+
+    - name: Build System Docker Images Validation
+      run: |
+        docker build -t test-backend -f Dockerfile.backend .
+        docker build -t test-frontend -f Dockerfile.frontend .
