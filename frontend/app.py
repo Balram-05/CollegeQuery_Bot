@@ -1,10 +1,10 @@
 import streamlit as st
 import requests
+import os
 
 st.set_page_config(page_title="College Assistant Bot", page_icon="🎓", layout="centered")
 
-BACKEND_URL = "http://localhost:8000"  # Changes to "http://backend:8000" inside standard docker grids
-
+BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
 # Initialize global session properties
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
